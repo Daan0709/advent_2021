@@ -11,6 +11,13 @@ public class PuzzleOne {
     public static void main(String[] args) {
         ArrayList<Integer> input = retrieveData("src/day1/input");
 
+        int increasedCounter = getIncreasedCounter(input);
+
+        String result = String.format("The amount increased %s times", increasedCounter);
+        System.out.println(result);
+    }
+
+    public static int getIncreasedCounter(ArrayList<Integer> input) {
         // The counter keeping track of how many times the number has increased,
         // set to negative one to counteract the first number counting as an increase
         int increasedCounter = -1;
@@ -22,12 +29,10 @@ public class PuzzleOne {
             }
             previousNum = num;
         }
-
-        String result = String.format("The amount increased %s times", increasedCounter);
-        System.out.println(result);
+        return increasedCounter;
     }
 
-    private static ArrayList<Integer> retrieveData(String path){
+    public static ArrayList<Integer> retrieveData(String path){
         try {
             ArrayList<Integer> result = new ArrayList<>();
             FileReader fr = new FileReader(path);
